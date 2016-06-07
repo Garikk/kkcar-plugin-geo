@@ -5,12 +5,13 @@
  */
 package kkdev.kksystem.plugin.geo;
 
-import kkdev.kksystem.plugin.rscomm.manager.RSManager;
+import kkdev.kksystem.plugin.geo.manager.GEOManager;
+
 
 /**
  *
  * @author blinov_is
  */
 public abstract class Global {
-    public static RSManager PM;
+    public static GEOManager GM;
 }
