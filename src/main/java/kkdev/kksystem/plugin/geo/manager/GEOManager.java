@@ -5,9 +5,8 @@
  */
 package kkdev.kksystem.plugin.geo.manager;
 
-import kkdev.kksystem.base.classes.base.PinBaseData;
-import kkdev.kksystem.base.classes.base.PinBaseDataTaggedObj;
-import kkdev.kksystem.base.classes.geo.PinGeoData;
+import kkdev.kksystem.base.classes.base.PinDataTaggedObj;
+import kkdev.kksystem.base.classes.geo.PinDataGeo;
 import kkdev.kksystem.base.classes.plugins.PluginMessage;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerBase;
 import kkdev.kksystem.base.constants.PluginConsts;
@@ -28,21 +27,21 @@ public class GEOManager extends PluginManagerBase {
     
     public void ReceivePIN(PluginMessage PM)
     {
-        if (!PM.PinName.equals(PluginConsts.KK_PLUGIN_BASE_BASIC_TAGGEDOBJ_DATA))
+        if (!PM.pinName.equals(PluginConsts.KK_PLUGIN_BASE_BASIC_TAGGEDOBJ_DATA))
             return;
         
-        PinBaseDataTaggedObj Dat=(PinBaseDataTaggedObj)PM.PinData;
+        PinDataTaggedObj Dat=(PinDataTaggedObj)PM.getPinData();
         //===
         if (!Dat.tag.equals(GEO_TAG))
             return;
-        if (Dat.dataType!=PinBaseData.BASE_DATA_TYPE.TAGGED_OBJ)
-            return;
+       // if (Dat.pinDataType!=PinBaseData.BASE_DATA_TYPE.TAGGED_OBJ)
+        //    return;
         //===
         
-       PinGeoData PBG=new  PinGeoData();
+       PinDataGeo PBG=new  PinDataGeo();
        
        PBG.FillNMEAData((String)Dat.value);
         
-       this.BASE_SendPluginMessage(SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID, PluginConsts.KK_PLUGIN_BASE_GEO_DATA, PBG);
+       this.BASE_SendPluginMessage(SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID,SystemConsts.KK_BASE_UICONTEXT_DEFAULT, PluginConsts.KK_PLUGIN_BASE_GEO_DATA, PBG);
     }
 }
