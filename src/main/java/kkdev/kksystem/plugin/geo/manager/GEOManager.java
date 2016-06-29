@@ -22,7 +22,7 @@ public class GEOManager extends PluginManagerBase {
    
     public void Init(KKPlugin BaseConnector)
     {
-        connector=BaseConnector;
+        setPluginConnector(BaseConnector);
     }
     
     public void ReceivePIN(PluginMessage PM)
