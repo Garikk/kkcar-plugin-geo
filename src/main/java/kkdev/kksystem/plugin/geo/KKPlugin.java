@@ -1,5 +1,6 @@
 package kkdev.kksystem.plugin.geo;
 
+import kkdev.kksystem.base.classes.plugins.PluginConfiguration;
 import kkdev.kksystem.base.classes.plugins.PluginMessage;
 import kkdev.kksystem.base.classes.plugins.simple.KKPluginBase;
 import kkdev.kksystem.plugin.geo.manager.GEOManager;
@@ -42,5 +43,8 @@ public final class KKPlugin extends KKPluginBase {
          super.pluginStart();
        //  Global.GM.Start();
     }
-
+ @Override
+    public PluginConfiguration getPluginSettings() {
+       return null;//PluginSettings.MainConfiguration;
+    }
 }
